@@ -116,43 +116,6 @@
       padding-bottom: 0.75rem;
     }
 
-    /* Content Narrative Style */
-    .narrative-box {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: border-color 0.3s ease;
-    }
-
-    .narrative-box:hover {
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-
-    .narrative-box h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
-    }
-
-    .narrative-box p {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    .timeline-date {
-      font-family: 'Geist Mono', monospace;
-      font-size: 0.85rem;
-      color: #818cf8;
-      font-weight: 500;
-    }
-
     /* Channels & Platforms Grid */
     .platforms-grid {
       display: grid;
@@ -201,6 +164,94 @@
     }
 
     .platform-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    /* Career Narrative Section */
+    .narrative-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .narrative-box:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .narrative-box h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .narrative-box p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .timeline-date {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.85rem;
+      color: #818cf8;
+      font-weight: 500;
+    }
+
+    /* Software Path Visual Grid */
+    .software-track {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .software-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1.25rem;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+    }
+
+    .software-step:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .software-num {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.9rem;
+      color: #818cf8;
+      background: rgba(129, 140, 248, 0.08);
+      border: 1px solid rgba(129, 140, 248, 0.2);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .software-details h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .software-details p {
       font-size: 0.85rem;
       color: var(--text-secondary);
       font-weight: 300;
@@ -330,16 +381,51 @@
 
     <!-- Career Narrative Section -->
     <section class="section-block">
-      <h2 class="section-title">My YouTube & TikTok Journey</h2>
+      <h2 class="section-title">My Creative Journey</h2>
       <div class="narrative-box">
-        <div class="timeline-date">Est. 00/00/0000</div>
+        <div class="timeline-date">Member Since Jan 4, 2021</div>
         <h3>From Roblox to VR Mastery</h3>
         <p>
-          I first launched my creative channels as an experimental space for casual gaming clips. My earliest uploads featured random gameplay on platforms like Roblox—sharing fun moments while learning the ropes of video pacing and graphic production.
+          I first launched my YouTube channel on January 4, 2021, as an experimental creative space. My early uploads were driven by absolute curiosity, sharing fun and lighthearted gameplay moments on platforms like Roblox while capturing early gaming memories.
         </p>
         <p>
-          Over time, I discovered my passion for the Gorilla Tag and Kats communities. Shifting my focus allowed me to master stylized 2D/3D edits and interactive social video formats, transforming casual clips into a structured portfolio of illustrations, edits, and community projects.
+          Over the years, my passion evolved as I dived deep into the Gorilla Tag and Kats communities. Focusing on these high-energy virtual spaces pushed me to transform standard recording clips into sleek, heavily edited projects.
         </p>
+      </div>
+    </section>
+
+    <!-- Editing Tool Evolution Section -->
+    <section class="section-block">
+      <h2 class="section-title">My Video Editing Evolution</h2>
+      <div class="software-track">
+        
+        <!-- Step 1: CapCut -->
+        <div class="software-step">
+          <span class="software-num">01</span>
+          <div class="software-details">
+            <h4>CapCut (The Beginning)</h4>
+            <p>Started my path working with mobile-friendly timelines. This tool taught me the essential rhythm of sync-cuts, basic transitions, and pacing sound effects to high-tempo gameplay tracks.</p>
+          </div>
+        </div>
+
+        <!-- Step 2: DaVinci Resolve -->
+        <div class="software-step">
+          <span class="software-num">02</span>
+          <div class="software-details">
+            <h4>DaVinci Resolve (Going Professional)</h4>
+            <p>Moved up to a desktop workflow to master complex nodes, tracking, and advanced color correction. This phase vastly polished the raw visual depth and clarity of my VR edits.</p>
+          </div>
+        </div>
+
+        <!-- Step 3: Premiere Pro -->
+        <div class="software-step">
+          <span class="software-num">03</span>
+          <div class="software-details">
+            <h4>Premiere Pro (The Current Standard)</h4>
+            <p>My primary engine for production today. It allows me to construct ultra-slick keyframed dynamics, seamless audio mixing, and rapid render pipelines for high-retention social content.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -353,7 +439,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-label">Format Style</div>
-          <div class="stat-value">Shorts / Edits</div>
+          <div class="stat-value">Premiere Pro Edits</div>
         </div>
       </div>
     </section>
