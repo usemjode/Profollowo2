@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S3cretGT - About Me</title>
+  
+  <!-- Premium Modern Sans-Serif Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Variables */
+    :root {
+      --bg-color: #000000;
+      --card-bg: rgba(255, 255, 255, 0.02);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: #8b8b8b;
+      --accent-glow: rgba(129, 140, 248, 0.15); /* Soft violet/blue tint */
+      --accent-border: rgba(129, 140, 248, 0.4);
+      --font-main: 'Geist', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      padding: 4rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container */
+    .portfolio-container {
+      width: 100%;
+      max-width: 680px; /* Consistently structured with main index page */
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* Header Section */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .palette-icon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .palette-icon {
+      width: 32px;
+      height: auto;
+      filter: invert(1); /* Sharp white icon look */
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .alert-tag {
+      font-size: 0.8rem;
+      font-family: 'Geist Mono', monospace;
+      color: #f87171; /* High-contrast soft red for warning */
+      background: rgba(248, 113, 113, 0.08);
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(248, 113, 113, 0.2);
+      display: inline-block;
+      margin-top: -0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section Cards */
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.75rem;
+    }
+
+    /* Art Grid (Pricing Cards) */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .art-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .art-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .art-card:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--accent-border);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-4px);
+    }
+
+    .art-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .art-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .art-card:hover .art-image-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .art-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .art-price {
+      font-family: 'Geist Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #818cf8; /* Premium Accent Color */
+    }
+
+    .art-tier {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* Guidelines Layout (Will/Will Not Do) */
+    .guidelines-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .guidelines-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .guide-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .guide-box h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .guide-box.will-do h3 {
+      color: #34d399; /* Green header */
+    }
+
+    .guide-box.will-not-do h3 {
+      color: #f87171; /* Red header */
+    }
+
+    .guide-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .guide-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Bullet Decorators */
+    .guide-list li::before {
+      content: '•';
+      font-weight: bold;
+    }
+    
+    .will-do .guide-list li::before {
+      color: #34d399;
+    }
+
+    .will-not-do .guide-list li::before {
+      color: #f87171;
+    }
+
+    /* Bottom Navigation Row */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 2rem;
+      margin-top: 1rem;
+    }
+
+    .bottom-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
+      position: relative;
+    }
+
+    .bottom-nav a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--text-primary);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s ease;
+    }
+
+    .bottom-nav a:hover {
+      color: var(--text-primary);
+    }
+
+    .bottom-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Footer Metadata */
+    footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-family: 'Geist Mono', monospace;
+      margin-top: 1.5rem;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1> ABout Me </h1>
+<p><h3> My Youtube Carrier </h3></p>
+<p> Starting Youtube On 00/00/0000 I Posted Random Content Like Roblox</p>
