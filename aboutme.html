@@ -153,6 +153,59 @@
       font-weight: 500;
     }
 
+    /* Channels & Platforms Grid */
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media(max-width: 480px) {
+      .platforms-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .platform-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .platform-card:hover {
+      border-color: var(--accent-border);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .platform-name {
+      font-size: 0.8rem;
+      font-family: 'Geist Mono', monospace;
+      color: #818cf8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .platform-handle {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .platform-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
     /* Stats Block */
     .stats-grid {
       display: grid;
@@ -172,12 +225,6 @@
       border-radius: 12px;
       padding: 1.25rem;
       text-align: left;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .stat-card:hover {
-      border-color: var(--accent-border);
-      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .stat-label {
@@ -253,39 +300,60 @@
     <!-- Hero Header -->
     <header class="hero">
       <div class="profile-icon-wrapper">
-        <!-- Minimalist clean graphic profile placeholder icon -->
         <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       </div>
       <h1>About Me</h1>
-      <span class="info-tag">Creator Background</span>
+      <span class="info-tag">Creator Identity</span>
     </header>
+
+    <!-- Creator Channels Section -->
+    <section class="section-block">
+      <h2 class="section-title">My Platforms</h2>
+      <div class="platforms-grid">
+        
+        <!-- TikTok Platform Card -->
+        <a href="https://www.tiktok.com/@S3cretGT" class="platform-card" target="_blank" rel="noopener">
+          <span class="platform-name">TikTok</span>
+          <span class="platform-handle">@S3cretGT</span>
+          <span class="platform-desc">Fast-paced edits, virtual reality trends, and stylized Gorilla Tag gameplay updates.</span>
+        </a>
+
+        <!-- YouTube Platform Card -->
+        <a href="https://www.youtube.com/@S3cretGT" class="platform-card" target="_blank" rel="noopener">
+          <span class="platform-name">YouTube</span>
+          <span class="platform-handle">@S3cretGT</span>
+          <span class="platform-desc">High-energy edits, gaming compilations, community showcases, and behind-the-scenes content.</span>
+        </a>
+
+      </div>
+    </section>
 
     <!-- Career Narrative Section -->
     <section class="section-block">
-      <h2 class="section-title">My YouTube Career</h2>
+      <h2 class="section-title">My YouTube & TikTok Journey</h2>
       <div class="narrative-box">
         <div class="timeline-date">Est. 00/00/0000</div>
-        <h3>The Content Journey</h3>
+        <h3>From Roblox to VR Mastery</h3>
         <p>
-          Every great channel starts somewhere. When I first launched my YouTube channel, I began by uploading casual, highly experimental gaming projects—frequently featuring dynamic platforms like Roblox. It was a space dedicated entirely to learning the fundamentals of tracking trends and trying out basic editing styles.
+          I first launched my creative channels as an experimental space for casual gaming clips. My earliest uploads featured random gameplay on platforms like Roblox—sharing fun moments while learning the ropes of video pacing and graphic production.
         </p>
         <p>
-          As time progressed, my focus shifted toward tracking unique creative communities. Transitioning into stylized platforms like Gorilla Tag and custom design work allowed me to define a clear voice, clean mechanics, and building direct interactive projects alongside a rapidly evolving base of viewers.
+          Over time, I discovered my passion for the Gorilla Tag and Kats communities. Shifting my focus allowed me to master stylized 2D/3D edits and interactive social video formats, transforming casual clips into a structured portfolio of illustrations, edits, and community projects.
         </p>
       </div>
     </section>
 
-    <!-- Stats & Highlight Data Modules -->
+    <!-- Stats Block -->
     <section class="section-block">
       <h2 class="section-title">Channel Profile</h2>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label">Main Niches</div>
+          <div class="stat-label">Core Niches</div>
           <div class="stat-value">GTAG & Kats</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Core Mediums</div>
-          <div class="stat-value">Shorts / Video</div>
+          <div class="stat-label">Format Style</div>
+          <div class="stat-value">Shorts / Edits</div>
         </div>
       </div>
     </section>
