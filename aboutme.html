@@ -58,24 +58,7 @@
       flex-direction: column;
       align-items: center;
       gap: 1.2rem;
-    }
-
-    .profile-icon-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-    }
-
-    .profile-icon {
-      width: 24px;
-      height: auto;
-      filter: invert(1);
-      opacity: 0.8;
+      margin-bottom: 1rem;
     }
 
     .hero h1 {
@@ -83,20 +66,6 @@
       font-weight: 700;
       letter-spacing: -0.03em;
       color: var(--text-primary);
-    }
-
-    .info-tag {
-      font-size: 0.8rem;
-      font-family: 'Geist Mono', monospace;
-      color: #818cf8; 
-      background: rgba(129, 140, 248, 0.08);
-      padding: 6px 14px;
-      border-radius: 100px;
-      border: 1px solid rgba(129, 140, 248, 0.2);
-      display: inline-block;
-      margin-top: -0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     /* Section Cards */
@@ -116,60 +85,7 @@
       padding-bottom: 0.75rem;
     }
 
-    /* Channels & Platforms Grid */
-    .platforms-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    @media(max-width: 480px) {
-      .platforms-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .platform-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      text-decoration: none;
-      color: var(--text-primary);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .platform-card:hover {
-      border-color: var(--accent-border);
-      background: rgba(255, 255, 255, 0.04);
-      box-shadow: 0 0 20px var(--accent-glow);
-      transform: translateY(-2px);
-    }
-
-    .platform-name {
-      font-size: 0.8rem;
-      font-family: 'Geist Mono', monospace;
-      color: #818cf8;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .platform-handle {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .platform-desc {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      font-weight: 300;
-    }
-
-    /* Career Narrative Section */
+    /* Content Narrative Style */
     .narrative-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -260,14 +176,8 @@
     /* Stats Block */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 1rem;
-    }
-
-    @media(max-width: 480px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     .stat-card {
@@ -348,11 +258,10 @@
 
   <div class="portfolio-container">
     
-      </div>
+    <!-- Hero Header -->
+    <header class="hero">
       <h1>About Me</h1>
-      
-      </div>
-    </section>
+    </header>
 
     <!-- Career Narrative Section -->
     <section class="section-block">
