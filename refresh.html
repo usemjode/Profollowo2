@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S3cretGT - Portfolio</title>
+  <title>S3cretGT - Art Commissions</title>
   
   <!-- Premium Modern Sans-Serif Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,8 +18,8 @@
       --card-border: rgba(255, 255, 255, 0.06);
       --text-primary: #ffffff;
       --text-secondary: #8b8b8b;
-      --accent-glow: rgba(99, 102, 241, 0.15); /* Soft premium purple/blue tint */
-      --accent-border: rgba(99, 102, 241, 0.4);
+      --accent-glow: rgba(129, 140, 248, 0.15); /* Soft violet/blue tint */
+      --accent-border: rgba(129, 140, 248, 0.4);
       --font-main: 'Geist', 'Inter', sans-serif;
     }
 
@@ -45,13 +45,13 @@
     /* Container */
     .portfolio-container {
       width: 100%;
-      max-width: 680px; /* Intentionally tight and sleek, smaal.pro style */
+      max-width: 680px; /* Consistently structured with main index page */
       display: flex;
       flex-direction: column;
       gap: 3.5rem;
     }
 
-    /* Hero Section */
+    /* Header Section */
     .hero {
       text-align: center;
       display: flex;
@@ -60,19 +60,21 @@
       gap: 1.2rem;
     }
 
-    .avatar-wrapper {
-      position: relative;
-      margin-bottom: 0.5rem;
+    .palette-icon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
     }
 
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 1px solid var(--card-border);
-      background: var(--card-bg);
-      padding: 5px;
-      object-fit: cover;
+    .palette-icon {
+      width: 32px;
+      height: auto;
+      filter: invert(1); /* Sharp white icon look */
     }
 
     .hero h1 {
@@ -82,24 +84,19 @@
       color: var(--text-primary);
     }
 
-    .hero-tag {
-      font-size: 0.85rem;
+    .alert-tag {
+      font-size: 0.8rem;
       font-family: 'Geist Mono', monospace;
-      color: #818cf8; /* Light violet tag */
-      background: rgba(129, 140, 248, 0.08);
-      padding: 4px 12px;
+      color: #f87171; /* High-contrast soft red for warning */
+      background: rgba(248, 113, 113, 0.08);
+      padding: 6px 14px;
       border-radius: 100px;
-      border: 1px solid rgba(129, 140, 248, 0.2);
+      border: 1px solid rgba(248, 113, 113, 0.2);
       display: inline-block;
       margin-top: -0.5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      font-weight: 300;
-      max-width: 500px;
-      margin: 0 auto;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     /* Section Cards */
@@ -119,95 +116,142 @@
       padding-bottom: 0.75rem;
     }
 
-    /* Social Links Grid */
-    .social-grid {
+    /* Art Grid (Pricing Cards) */
+    .art-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
 
-    @media (max-width: 480px) {
-      .social-grid {
+    @media (max-width: 600px) {
+      .art-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .social-card {
+    .art-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 0.85rem;
-      padding: 1rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .social-card img {
-      width: 20px;
-      height: 20px;
-      opacity: 0.8;
-      filter: invert(1); /* Ensures clean white icons in dark mode */
-      transition: transform 0.25s ease;
-    }
-
-    .social-card:hover {
-      background: rgba(255, 255, 255, 0.05);
+    .art-card:hover {
+      background: rgba(255, 255, 255, 0.03);
       border-color: var(--accent-border);
       box-shadow: 0 0 20px var(--accent-glow);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
     }
 
-    .social-card:hover img {
-      transform: scale(1.1);
-      opacity: 1;
+    .art-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    /* Embedded Video Frame Style */
-    .video-wrapper {
+    .art-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .art-card:hover .art-image-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .art-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .art-price {
+      font-family: 'Geist Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #818cf8; /* Premium Accent Color */
+    }
+
+    .art-tier {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* Guidelines Layout (Will/Will Not Do) */
+    .guidelines-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .guidelines-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .guide-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      transition: border-color 0.3s ease;
+      padding: 1.5rem;
     }
 
-    .video-wrapper:hover {
-      border-color: rgba(255, 255, 255, 0.15);
+    .guide-box h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .video-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .guide-box.will-do h3 {
+      color: #34d399; /* Green header */
     }
 
-    /* Styled Interactive Form Frame */
-    .form-wrapper {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      overflow: hidden;
-      height: 520px;
-      transition: border-color 0.3s ease;
+    .guide-box.will-not-do h3 {
+      color: #f87171; /* Red header */
     }
 
-    .form-wrapper:hover {
-      border-color: rgba(255, 255, 255, 0.15);
+    .guide-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
     }
 
-    .form-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      filter: invert(0.9) hue-rotate(180deg); /* Modern hack to dark-mode standard Google Forms */
-      opacity: 0.85;
+    .guide-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Bullet Decorators */
+    .guide-list li::before {
+      content: '•';
+      font-weight: bold;
+    }
+    
+    .will-do .guide-list li::before {
+      color: #34d399;
+    }
+
+    .will-not-do .guide-list li::before {
+      color: #f87171;
     }
 
     /* Bottom Navigation Row */
@@ -266,64 +310,87 @@
 
   <div class="portfolio-container">
 
-    <!-- Hero Identity -->
+    <!-- Hero Header -->
     <header class="hero">
-      <div class="avatar-wrapper">
-        <img class="avatar" src="https://files.catbox.moe/jtyspn.png" alt="S3cret Avatar">
+      <div class="palette-icon-wrapper">
+        <img class="palette-icon" src="Pallete.png" alt="Palette Icon">
       </div>
-      <h1>My Portfolio</h1>
-      <span class="hero-tag">@S3cretGT</span>
-      <p>Hello, my name is S3cret. I create Gorilla Tag and Kats content, posting primarily on TikTok and YouTube.</p>
+      <h1>Art Commissions</h1>
+      <span class="alert-tag">Not Free</span>
     </header>
 
-    <!-- Social Links Block -->
+    <!-- Art Examples Section -->
     <section class="section-block">
-      <h2 class="section-title">Social Links</h2>
-      <div class="social-grid">
-        <a href="https://www.youtube.com/@S3cretGT" class="social-card" target="_blank" rel="noopener">
-          <img src="youtube.svg" alt="" onerror="this.style.display='none'"> 
-          <span>Youtube</span>
-        </a>
-        <a href="https://www.tiktok.com/@s3cretgt" class="social-card" target="_blank" rel="noopener">
-          <img src="tik-tok.svg" alt="" onerror="this.style.display='none'"> 
-          <span>Tiktok</span>
-        </a>
-        <a href="https://discord.gg/P3hbWUhTmw" class="social-card" target="_blank" rel="noopener">
-          <img src="discord.svg" alt="" onerror="this.style.display='none'"> 
-          <span>Discord</span>
-        </a>
-        <a href="https://twitch.tv/S3cretelfy" class="social-card" target="_blank" rel="noopener">
-          <img src="twitch.svg" alt="" onerror="this.style.display='none'"> 
-          <span>Twitch</span>
-        </a>
-        <a href="https://x.com/S3cretGT" class="social-card" target="_blank" rel="noopener">
-          <img src="twitter.svg" alt="" onerror="this.style.display='none'"> 
-          <span>Twitter</span>
-        </a>
-        <a href="https://github.com/usemjode" class="social-card" target="_blank" rel="noopener">
-          <img src="github.svg" alt="" onerror="this.style.display='none'"> 
-          <span>Github</span>
-        </a>
+      <h2 class="section-title">Art Examples</h2>
+      <div class="art-grid">
+        
+        <!-- $1 Doodle -->
+        <div class="art-card">
+          <div class="art-image-wrapper">
+            <img src="unnamed (8).png" alt="Doodle Example">
+          </div>
+          <div class="art-meta">
+            <span class="art-price">$1</span>
+            <span class="art-tier">Doodle</span>
+          </div>
+        </div>
+
+        <!-- $5 Shoulder -->
+        <div class="art-card">
+          <div class="art-image-wrapper">
+            <img src="1000010588.png" alt="Shoulder Example">
+          </div>
+          <div class="art-meta">
+            <span class="art-price">$5</span>
+            <span class="art-tier">Shoulder</span>
+          </div>
+        </div>
+
+        <!-- $10 Waist -->
+        <div class="art-card">
+          <div class="art-image-wrapper">
+            <img src="1000011193.png" alt="Waist Example">
+          </div>
+          <div class="art-meta">
+            <span class="art-price">$10</span>
+            <span class="art-tier">Waist</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Featured Video Block -->
+    <!-- Guidelines Section -->
     <section class="section-block">
-      <h2 class="section-title">Latest Video</h2>
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/D3-14NA4pKk?si=oeERlvQ-BREoiggt" allowfullscreen></iframe>
+      <h2 class="section-title">Guidelines</h2>
+      <div class="guidelines-container">
+        
+        <!-- Will Do Box -->
+        <div class="guide-box will-do">
+          <h3>Will DO</h3>
+          <ul class="guide-list">
+            <li>Gorilla Tag</li>
+            <li>Cosmetics (Head, body, hand, face)</li>
+            <li>Kinitopet</li>
+            <li>ETC...</li>
+          </ul>
+        </div>
+
+        <!-- Will Not Do Box -->
+        <div class="guide-box will-not-do">
+          <h3>Will NOT DO</h3>
+          <ul class="guide-list">
+            <li>NSFW</li>
+            <li>Humans</li>
+            <li>Gore</li>
+            <li>Anything not listed as "Will Do"</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
-    <!-- Collaborative Ideas Form Block -->
-    <section class="section-block">
-      <h2 class="section-title">Request A Video Idea</h2>
-      <div class="form-wrapper">
-        <iframe src="https://forms.gle/cDKbQcy2BmtCQ3Uz9"></iframe>
-      </div>
-    </section>
-
-    <!-- Footer System Navigation -->
+    <!-- Footer Navigation -->
     <div class="navigation-footer">
       <nav class="bottom-nav">
         <a href="index.html">Home</a>
