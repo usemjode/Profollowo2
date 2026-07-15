@@ -1,51 +1,342 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik+Spray+Paint&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-  <title>S3cretGT - Profollowo</title>
-   <style>
-        body {
-            background-color: rgb(255, 255, 255);
-        }    
-.source-sans-3 {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-    </style>
+  <title>S3cretGT - Portfolio</title>
+  
+  <!-- Premium Modern Sans-Serif Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Variables */
+    :root {
+      --bg-color: #000000;
+      --card-bg: rgba(255, 255, 255, 0.02);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: #8b8b8b;
+      --accent-glow: rgba(99, 102, 241, 0.15); /* Soft premium purple/blue tint */
+      --accent-border: rgba(99, 102, 241, 0.4);
+      --font-main: 'Geist', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      padding: 4rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container */
+    .portfolio-container {
+      width: 100%;
+      max-width: 680px; /* Intentionally tight and sleek, smaal.pro style */
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      padding: 5px;
+      object-fit: cover;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .hero-tag {
+      font-size: 0.85rem;
+      font-family: 'Geist Mono', monospace;
+      color: #818cf8; /* Light violet tag */
+      background: rgba(129, 140, 248, 0.08);
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(129, 140, 248, 0.2);
+      display: inline-block;
+      margin-top: -0.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Section Cards */
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.75rem;
+    }
+
+    /* Social Links Grid */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 480px) {
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .social-card img {
+      width: 20px;
+      height: 20px;
+      opacity: 0.8;
+      filter: invert(1); /* Ensures clean white icons in dark mode */
+      transition: transform 0.25s ease;
+    }
+
+    .social-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-border);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .social-card:hover img {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    /* Embedded Video Frame Style */
+    .video-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.3s ease;
+    }
+
+    .video-wrapper:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Styled Interactive Form Frame */
+    .form-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      height: 520px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-wrapper:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: invert(0.9) hue-rotate(180deg); /* Modern hack to dark-mode standard Google Forms */
+      opacity: 0.85;
+    }
+
+    /* Bottom Navigation Row */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 2rem;
+      margin-top: 1rem;
+    }
+
+    .bottom-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
+      position: relative;
+    }
+
+    .bottom-nav a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--text-primary);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s ease;
+    }
+
+    .bottom-nav a:hover {
+      color: var(--text-primary);
+    }
+
+    .bottom-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Footer Metadata */
+    footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-family: 'Geist Mono', monospace;
+      margin-top: 1.5rem;
+      opacity: 0.6;
+    }
+  </style>
 </head>
-<body class="source-sans-3">
-    <center> <h1 style="text-align: center;" "color: white;"> My Profollowo <img width="40" height="40" src="https://files.catbox.moe/jtyspn.png">  <br></h1>
-  <p style="text-align: center;" Hello My Name is S3cret. <br>
-   <h4> I Do Gorilla Tag, And Kats content, posting on Tiktok, and Youtube. <br>
- <p> 
-  My Offical @ on any site Usually would be @S3cretGT <br>
-  Here you can find some of my socials below this. </h4><br>
-  <h2>Social Links</h2>
-  <p> <a href="https://www.youtube.com/@S3cretGT"> <button><img src="youtube.svg" width="20" height="12"> Youtube </button> </a> 
-  <p> <a href="https://www.tiktok.com/@s3cretgt"> <button><img src="tik-tok.svg" width="20" height="12"> Tiktok </button> </a>
-  <p> <a href="https://discord.gg/P3hbWUhTmw"> <button><img src="discord.svg" width="20" height="12"> Discord </button> </a> 
-  <p> <a href="https://twitch.tv/S3cretelfy"> <button><img src="twitch.svg" width="20" height="12"> Twitch </button> </a> 
-      <p> <a href="https://x.com/S3cretGT"> <button><img src="twitter.svg" width="20" height="12"> Twitter </button> </a> 
-  <p> <a href="https://github.com/usemjode"> <button><img src="github.svg" width="20" height="12"> Github </button> </a> 
+<body>
 
-  <h2>Latest Video </h2>
-<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/D3-14NA4pKk?si=oeERlvQ-BREoiggt" frameborder="0" allowfullscreen></iframe>
+  <div class="portfolio-container">
 
+    <!-- Hero Identity -->
+    <header class="hero">
+      <div class="avatar-wrapper">
+        <img class="avatar" src="https://files.catbox.moe/jtyspn.png" alt="S3cret Avatar">
+      </div>
+      <h1>My Portfolio</h1>
+      <span class="hero-tag">@S3cretGT</span>
+      <p>Hello, my name is S3cret. I create Gorilla Tag and Kats content, posting primarily on TikTok and YouTube.</p>
+    </header>
 
+    <!-- Social Links Block -->
+    <section class="section-block">
+      <h2 class="section-title">Social Links</h2>
+      <div class="social-grid">
+        <a href="https://www.youtube.com/@S3cretGT" class="social-card" target="_blank" rel="noopener">
+          <img src="youtube.svg" alt="" onerror="this.style.display='none'"> 
+          <span>Youtube</span>
+        </a>
+        <a href="https://www.tiktok.com/@s3cretgt" class="social-card" target="_blank" rel="noopener">
+          <img src="tik-tok.svg" alt="" onerror="this.style.display='none'"> 
+          <span>Tiktok</span>
+        </a>
+        <a href="https://discord.gg/P3hbWUhTmw" class="social-card" target="_blank" rel="noopener">
+          <img src="discord.svg" alt="" onerror="this.style.display='none'"> 
+          <span>Discord</span>
+        </a>
+        <a href="https://twitch.tv/S3cretelfy" class="social-card" target="_blank" rel="noopener">
+          <img src="twitch.svg" alt="" onerror="this.style.display='none'"> 
+          <span>Twitch</span>
+        </a>
+        <a href="https://x.com/S3cretGT" class="social-card" target="_blank" rel="noopener">
+          <img src="twitter.svg" alt="" onerror="this.style.display='none'"> 
+          <span>Twitter</span>
+        </a>
+        <a href="https://github.com/usemjode" class="social-card" target="_blank" rel="noopener">
+          <img src="github.svg" alt="" onerror="this.style.display='none'"> 
+          <span>Github</span>
+        </a>
+      </div>
+    </section>
 
-  <h2>Request A Video Idea!</h2>
-<p><iframe src="https://forms.gle/cDKbQcy2BmtCQ3Uz9" width="100%" height="500"></iframe>
+    <!-- Featured Video Block -->
+    <section class="section-block">
+      <h2 class="section-title">Latest Video</h2>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/D3-14NA4pKk?si=oeERlvQ-BREoiggt" allowfullscreen></iframe>
+      </div>
+    </section>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="Page.html">Art Commisons</a>
-   <a href="Secretpage.html">Behind The Scenes</a>
-</nav>
- <p> <sub> (Offical Creator For Kats! • Last Updated May, 28, 2026)
+    <!-- Collaborative Ideas Form Block -->
+    <section class="section-block">
+      <h2 class="section-title">Request A Video Idea</h2>
+      <div class="form-wrapper">
+        <iframe src="https://forms.gle/cDKbQcy2BmtCQ3Uz9"></iframe>
+      </div>
+    </section>
+
+    <!-- Footer System Navigation -->
+    <div class="navigation-footer">
+      <nav class="bottom-nav">
+        <a href="index.html">Home</a>
+        <a href="Page.html">Art Commissions</a>
+        <a href="Secretpage.html">Behind The Scenes</a>
+      </nav>
+      
+      <footer>
+        <p>Official Creator For Kats! &bull; Last Updated May 28, 2026</p>
+      </footer>
+    </div>
+
+  </div>
+
 </body>
 </html>
