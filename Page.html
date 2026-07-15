@@ -1,85 +1,516 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik+Spray+Paint&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-  <title>S3cretGT - Art Commisons</title>
-   <style>
-        body {
-            background-color: rgb(255, 255, 255);
-        } 
-.source-sans-3 {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-body {
-    margin: 0;
-    padding: 0;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S3cretGT - Artwork Gallery</title>
+  
+  <!-- Premium Modern Sans-Serif Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-/* We added center alignment to the parent container so the button stays centered */
-body {
-    text-align: center; 
-}
-
-.art-header {
-    background-color: #aaaaff;
-    color: #ffffff;
-    padding: 10px 20px;       /* 10px top/bottom, 20px left/right spacing */
-    display: inline-block;    /* 👈 This makes the background hug the text! */
-    margin-top: 20px;         /* Adds a little space above it from the top of the screen */
-    border-radius: 5px;       /* Optional: softens the corners slightly */
-}
-    {
-        box-sizing: border-box;
-    }
-    /* Set additional styling options for the columns*/
-    .column {
-    float: left;
-    width: 50%;
+  <style>
+    /* Reset & Base Variables */
+    :root {
+      --bg-color: #000000;
+      --card-bg: rgba(255, 255, 255, 0.02);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: #8b8b8b;
+      --accent-glow: rgba(129, 140, 248, 0.15); 
+      --accent-border: rgba(129, 140, 248, 0.4);
+      --font-main: 'Geist', 'Inter', sans-serif;
     }
 
-    .row:after {
-    content: "";
-    display: table;
-    clear: both;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    </style>
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      padding: 4rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container */
+    .portfolio-container {
+      width: 100%;
+      max-width: 720px; 
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* Hero Header */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .palette-icon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .palette-icon {
+      width: 32px;
+      height: auto;
+      filter: invert(1);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    /* Premium Link & Info Styling */
+    .info-banner {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      max-width: 550px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .info-banner a {
+      color: #818cf8;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed rgba(129, 140, 248, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .info-banner a:hover {
+      color: #a5b4fc;
+      border-bottom-color: #a5b4fc;
+    }
+
+    /* Section Cards */
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.75rem;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 400px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-card:hover {
+      border-color: var(--accent-border);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-3px);
+    }
+
+    .gallery-img-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #050505;
+    }
+
+    .gallery-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover .gallery-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .gallery-meta {
+      padding: 0.75rem;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-align: center;
+      border-top: 1px solid var(--card-border);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Expanded Guidelines System */
+    .guidelines-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .guide-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+
+    .guide-section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .guide-section.will-do h3 {
+      color: #34d399; /* Emerald */
+    }
+
+    .guide-section.will-not-do h3 {
+      color: #f87171; /* Coral Red */
+    }
+
+    .guide-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .guide-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .guide-item-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .guide-item-title::before {
+      content: '•';
+      font-weight: bold;
+    }
+
+    .will-do .guide-item-title::before {
+      color: #34d399;
+    }
+
+    .will-not-do .guide-item-title::before {
+      color: #f87171;
+    }
+
+    .guide-item-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      padding-left: 0.9rem;
+    }
+
+    /* Bottom Navigation Footer */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 2rem;
+      margin-top: 1rem;
+    }
+
+    .bottom-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
+      position: relative;
+    }
+
+    .bottom-nav a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--text-primary);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s ease;
+    }
+
+    .bottom-nav a:hover {
+      color: var(--text-primary);
+    }
+
+    .bottom-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Footer Metadata */
+    footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-family: 'Geist Mono', monospace;
+      margin-top: 1.5rem;
+      opacity: 0.6;
+    }
+  </style>
 </head>
-<body class="source-sans-3">
-  <p><center> <h1> <header class="art-header">
-    <img src="Pallete.png"width=40 height="30">Art Commissons </header></h1>
-        <sub>!!! these are NOT FREE !!!</sub>
-        <p><h2>Art Exanples</h2>
-            <h3>1$ Doodle</h3><p>
-            <img src="unnamed (8).png"width="200"><p>
-            <h3>5$ Shoulder</h3><p>
-            <img src="1000010588.png"width="200"><p>
-                <h3>10$ Waist</h3><p>
-                    <img src="1000011193.png"width="200"><p>
-                        
-    <div class="row">
-        <div class="column" style="background-color:#FFB695;">
-            <h2>Will NOT DO</h2>
-            <p>NSFW</p>
-            <p>Humans</p>
-            <p>Gore</p>
-            <p>anything not mentioned in will do</p>
+<body>
+
+  <div class="portfolio-container">
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="palette-icon-wrapper">
+        <img class="palette-icon" src="Pallete.png" alt="Palette Icon">
+      </div>
+      <h1>Artwork Gallery</h1>
+      
+      <!-- Conditional Art Pricing Status -->
+      <div class="info-banner">
+        My art is generally <strong>free</strong>, but can become <a href="paid.html">paid</a> depending on the amount of detail, complex cosmetics, or the number of characters requested in a single artwork.
+      </div>
+    </header>
+
+    <!-- Art Examples Section (12 Images Grid) -->
+    <section class="section-block">
+      <h2 class="section-title">Showcase Gallery</h2>
+      <div class="gallery-grid">
+        
+        <!-- Image 1 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000010588.png" alt="Artwork 10588">
+          </div>
+          <div class="gallery-meta">10588.png</div>
         </div>
-        <div class="column" style="background-color:#96D1CD;">
-            <h2>Will DO</h2>
-            <p>Gorilla Tag</p>
-            <p>Head, body, hand, face cosmetics</p>
-            <p>Kinitopet</p>
-            <P>ETC...</p>
+
+        <!-- Image 2 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011193.png" alt="Artwork 11193">
+          </div>
+          <div class="gallery-meta">11193.png</div>
         </div>
+
+        <!-- Image 3 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011345.png" alt="Artwork 11345">
+          </div>
+          <div class="gallery-meta">11345.png</div>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011702.png" alt="Artwork 11702">
+          </div>
+          <div class="gallery-meta">11702.png</div>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011706.png" alt="Artwork 11706">
+          </div>
+          <div class="gallery-meta">11706.png</div>
+        </div>
+
+        <!-- Image 6 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011745.png" alt="Artwork 11745">
+          </div>
+          <div class="gallery-meta">11745.png</div>
+        </div>
+
+        <!-- Image 7 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011874.png" alt="Artwork 11874">
+          </div>
+          <div class="gallery-meta">11874.png</div>
+        </div>
+
+        <!-- Image 8 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011887.png" alt="Artwork 11887">
+          </div>
+          <div class="gallery-meta">11887.png</div>
+        </div>
+
+        <!-- Image 9 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011948.png" alt="Artwork 11948">
+          </div>
+          <div class="gallery-meta">11948.png</div>
+        </div>
+
+        <!-- Image 10 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000011983.png" alt="Artwork 11983">
+          </div>
+          <div class="gallery-meta">11983.png</div>
+        </div>
+
+        <!-- Image 11 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000012177.png" alt="Artwork 12177">
+          </div>
+          <div class="gallery-meta">12177.png</div>
+        </div>
+
+        <!-- Image 12 -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img src="1000012200.png" alt="Artwork 12200">
+          </div>
+          <div class="gallery-meta">12200.png</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Expanded Guidelines Section -->
+    <section class="section-block">
+      <h2 class="section-title">Commissions Guidelines</h2>
+      <div class="guidelines-wrapper">
+        
+        <!-- Expanded Will Do Section -->
+        <div class="guide-section will-do">
+          <h3>Will Do</h3>
+          <div class="guide-items">
+            
+            <div class="guide-item">
+              <span class="guide-item-title">Gorilla Tag Style</span>
+              <span class="guide-item-desc">I specialize in creating custom profile photos, banners, and character scenes styled exactly like GTAG monkeys.</span>
+            </div>
+
+            <div class="guide-item">
+              <span class="guide-item-title">Complex Cosmetics</span>
+              <span class="guide-item-desc">Includes complete head, body, hand, and facial cosmetics. Detail options like custom badges, holdables, and customized patterns.</span>
+            </div>
+
+            <div class="guide-item">
+              <span class="guide-item-title">Kinitopet & Digital Critters</span>
+              <span class="guide-item-desc">I can draw flat and retro-styled digital creatures inspired by classic 2000s desktop companion aesthetics.</span>
+            </div>
+
+            <div class="guide-item">
+              <span class="guide-item-title">Etc. (Custom Requests)</span>
+              <span class="guide-item-desc">Open to alternative mascot designs or simplistic flat-vector layouts within my current illustration scope.</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Expanded Will Not Do Section -->
+        <div class="guide-section will-not-do">
+          <h3>Will Not Do</h3>
+          <div class="guide-items">
+            
+            <div class="guide-item">
+              <span class="guide-item-title">NSFW / 18+ Content</span>
+              <span class="guide-item-desc">I run a clean, friendly content channel and do not design explicit, suggestive, or highly mature themes under any circumstances.</span>
+            </div>
+
+            <div class="guide-item">
+              <span class="guide-item-title">Realistic Humans</span>
+              <span class="guide-item-desc">My visual style is highly optimized for stylized, low-poly cartoon avatars, flat designs, and animals. Realism or anatomy studies are outside my scope.</span>
+            </div>
+
+            <div class="guide-item">
+              <span class="guide-item-title">Heavy Gore</span>
+              <span class="guide-item-desc">Light cuts or basic stylized bruises are fine, but I do not draw intense, realistic violence, gore, or horror elements.</span>
+            </div>
+
+            <div class="guide-item">
+              <span class="guide-item-title">Excluded Categories</span>
+              <span class="guide-item-desc">If a theme or design structure is not clearly specified in my "Will Do" category, I reserve the right to decline or suggest modifications.</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer Navigation -->
+    <div class="navigation-footer">
+      <nav class="bottom-nav">
+        <a href="index.html">Home</a>
+        <a href="Page.html">Art Commissions</a>
+        <a href="Secretpage.html">Behind The Scenes</a>
+      </nav>
+      
+      <footer>
+        <p>Official Creator For Kats! &bull; Last Updated May 28, 2026</p>
+      </footer>
     </div>
-    <p><nav>
-  <a href="index.html">Home</a>
-  <a href="Page.html">Art Commisons</a>
-  <a href="Secretpage.html">Behind The Scenes</a>
-</nav><p>
+
+  </div>
+
+</body>
+</html>
